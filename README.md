@@ -1,4 +1,4 @@
-# Live version is coming soon
+# Live version is avaliable at https://chatbot-cognigy.herokuapp.com/
 
 # Web-based Chatbot UI with Cognigy
 
