@@ -1,4 +1,4 @@
-# Live version is available at https://young-forest-95960.herokuapp.com/
+# Live version is coming soon
 
 # Web-based Chatbot UI with Cognigy
 
