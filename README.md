@@ -19,6 +19,4 @@ The page will reload if you make edits.
 The tests were written by using Cypress Testing Tool. It can be opened from the project root by running 'npm test' command
 
 ### `npm run build`
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The app is ready to be deployed!
+It correctly bundles React in production mode and the app is ready to be deployed!
