@@ -1,5 +1,3 @@
-# Live version is avaliable at https://chatbot-cognigy.herokuapp.com/
-
 # Web-based Chatbot UI with Cognigy
 
 This project is created by using React+Typescript and contains Chatbot connected with Cognigy Socket Client. No "zero-config" tools were used and it was created from scratch. 
