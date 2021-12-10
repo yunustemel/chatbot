@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState, useMemo } from 'react';
 import Grid from '@mui/material/Grid';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -26,41 +26,44 @@ export default function Body() {
         }
     }, [messages, imageLoaded]);
 
-    return (
-        <Grid container data-cy="app-body">
-            <Grid item xs={12}>
-                <List style={{ height: '40vh', overflowY: 'auto' }}>
-                    {messages.map((message, index) => {
-                        return (
-                            <ListItem key={index}>
-                                <Grid container>
-                                    <Grid item xs={12}>
-                                        <CustomListItemText
-                                            data-cy="message-bubble"
-                                            primary={message.text}
-                                            secondary={message.time}
-                                            from={message.from}
-                                            secondaryTypographyProps={{
-                                                style: { color: message.from === 'You' ? '#fff' : '#000' },
-                                            }}
-                                        />
-                                        {Object.keys(message.data).length > 0 && message.data.imgSrc && (
-                                            <CustomImg
-                                                src={message.data.imgSrc}
-                                                alt={message.text}
-                                                onLoad={() => setImageLoaded(!imageLoaded)}
-                                                loading="lazy"
-                                                data-cy="message-img"
+    return useMemo(
+        () => (
+            <Grid container data-cy="app-body">
+                <Grid item xs={12}>
+                    <List style={{ height: '40vh', overflowY: 'auto' }}>
+                        {messages.map((message, index) => {
+                            return (
+                                <ListItem key={index}>
+                                    <Grid container>
+                                        <Grid item xs={12}>
+                                            <CustomListItemText
+                                                data-cy="message-bubble"
+                                                primary={message.text}
+                                                secondary={message.time}
+                                                from={message.from}
+                                                secondaryTypographyProps={{
+                                                    style: { color: message.from === 'You' ? '#fff' : '#000' },
+                                                }}
                                             />
-                                        )}
+                                            {Object.keys(message.data).length > 0 && message.data.imgSrc && (
+                                                <CustomImg
+                                                    src={message.data.imgSrc}
+                                                    alt={message.text}
+                                                    onLoad={() => setImageLoaded(!imageLoaded)}
+                                                    loading="lazy"
+                                                    data-cy="message-img"
+                                                />
+                                            )}
+                                        </Grid>
                                     </Grid>
-                                </Grid>
-                                <div ref={scrollRef} />
-                            </ListItem>
-                        );
-                    })}
-                </List>
+                                    <div ref={scrollRef} />
+                                </ListItem>
+                            );
+                        })}
+                    </List>
+                </Grid>
             </Grid>
-        </Grid>
+        ),
+        [messages, imageLoaded],
     );
 }
